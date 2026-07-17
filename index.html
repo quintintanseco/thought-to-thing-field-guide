@@ -3,69 +3,109 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f2f0e8">
-  <meta name="description" content="An interactive field guide to what you can create with Codex.">
-  <title>From Thought to Thing — Codex Field Guide</title>
+  <meta name="theme-color" content="#0d0f0c">
+  <meta name="description" content="Four hands-on browser tools: build a webpage, analyze CSV data, transform notes, and generate a poster.">
+  <title>Codex Hands-On Lab</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="site-shell">
-    <div class="cursor-glow" aria-hidden="true"></div>
-    <nav class="nav wrap" aria-label="Main navigation">
-      <a class="brand" href="#top"><span class="brand-mark">C</span><span>CODEX / FIELD GUIDE</span></a>
-      <div class="nav-right"><span class="availability"><i></i> Ready to make</span><a class="pill-link" href="#try">Try a thought <span>↘</span></a></div>
-    </nav>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="wordmark" href="#top"><span class="mark">C</span><span>CODEX <i>//</i> HANDS-ON LAB</span></a>
+    <div class="privacy"><span class="pulse"></span> Runs on your device</div>
+    <a class="jump" href="#lab">Enter the lab <span>↓</span></a>
+  </header>
 
-    <section class="hero wrap" id="top">
+  <main id="top">
+    <section class="hero">
       <div class="hero-copy">
-        <div class="eyebrow"><span>✦</span> A small glimpse of what we can do together</div>
-        <h1><span>FROM</span><span class="outline-word">THOUGHT</span><span>TO <em>THING.</em></span></h1>
-        <div class="hero-bottom"><p>I research, reason, design, write, code, and operate tools. You bring the half-formed idea. We leave with something real.</p><a href="#studio" class="circle-link"><span>Explore</span><b>↓</b></a></div>
+        <p class="overline">You asked for hands-on. Fair point.</p>
+        <h1>DON’T READ<br>ABOUT IT.<br><em>USE IT.</em></h1>
+        <p class="lede">Four working tools. Bring a rough idea, messy data, chaotic notes, or three words. Leave with something you can download.</p>
+        <a class="primary-cta" href="#lab">Start making <span>↘</span></a>
       </div>
-      <div class="hero-orbit" aria-label="Interactive capability map">
-        <div class="orbit-stage"><div class="orbit-line orbit-one"></div><div class="orbit-line orbit-two"></div><div class="orbit-line orbit-three"></div><div class="core"><span class="core-label">IDEA</span><span class="core-arrow">↗</span></div><span class="orbit-tag tag-one">RESEARCH</span><span class="orbit-tag tag-two">DESIGN</span><span class="orbit-tag tag-three">CODE</span><span class="orbit-tag tag-four">SHIP</span><span class="orbit-dot dot-one"></span><span class="orbit-dot dot-two"></span></div>
-        <div class="orbit-caption"><span>Move around</span><span>Possibility engine / 2026</span></div>
+      <div class="hero-console" aria-label="Lab readiness">
+        <div class="console-top"><span>LIVE SYSTEM</span><span class="blink">● READY</span></div>
+        <div class="console-orb"><div class="orb-ring r1"></div><div class="orb-ring r2"></div><div class="orb-core">4</div><span>TOOLS ONLINE</span></div>
+        <div class="console-log"><span><b>01</b> BUILD A WEBPAGE</span><span><b>02</b> READ YOUR DATA</span><span><b>03</b> TAME YOUR NOTES</span><span><b>04</b> MAKE A POSTER</span></div>
       </div>
     </section>
 
-    <section class="ticker" aria-label="Capabilities"><div class="ticker-track"><span>RESEARCH</span><i>✦</i><span>DESIGN</span><i>✦</i><span>CODE</span><i>✦</i><span>ANALYZE</span><i>✦</i><span>AUTOMATE</span><i>✦</i><span>CREATE</span><i>✦</i><span>RESEARCH</span><i>✦</i><span>DESIGN</span><i>✦</i><span>CODE</span><i>✦</i><span>ANALYZE</span><i>✦</i><span>AUTOMATE</span><i>✦</i><span>CREATE</span><i>✦</i></div></section>
+    <section class="lab" id="lab">
+      <header class="lab-head">
+        <div><span class="eyebrow">THE PLAYGROUND</span><h2>Pick a tool.<br>Make a thing.</h2></div>
+        <p>Everything below works in this tab. Your files and text stay in your browser.</p>
+      </header>
 
-    <section class="studio wrap" id="studio">
-      <header class="section-head"><div><span class="section-no">01</span><span>THE STUDIO</span></div><p>One partner.<br>Many kinds of momentum.</p></header>
-      <div class="mode-grid">
-        <div class="mode-tabs" role="tablist" aria-label="Kinds of work">
-          <button class="active" data-mode="0" role="tab" aria-selected="true"><span>01</span><strong>Build</strong><i>↗</i></button>
-          <button data-mode="1" role="tab" aria-selected="false"><span>02</span><strong>Understand</strong><i>→</i></button>
-          <button data-mode="2" role="tab" aria-selected="false"><span>03</span><strong>Automate</strong><i>→</i></button>
-          <button data-mode="3" role="tab" aria-selected="false"><span>04</span><strong>Create</strong><i>→</i></button>
+      <nav class="tool-tabs" role="tablist" aria-label="Hands-on tools">
+        <button class="active" data-tool="web" role="tab" aria-selected="true"><span>01</span><b>Web Forge</b><i>Build</i></button>
+        <button data-tool="data" role="tab" aria-selected="false"><span>02</span><b>Data Lens</b><i>Analyze</i></button>
+        <button data-tool="notes" role="tab" aria-selected="false"><span>03</span><b>Note Tamer</b><i>Structure</i></button>
+        <button data-tool="poster" role="tab" aria-selected="false"><span>04</span><b>Poster Lab</b><i>Create</i></button>
+      </nav>
+
+      <section class="tool-panel active" id="tool-web" role="tabpanel">
+        <div class="panel-intro"><div><span class="tool-no">01 / WEB FORGE</span><h3>Turn a napkin idea into a landing page.</h3></div><p>Change the brief, choose a visual direction, then export the generated page as a standalone HTML file.</p></div>
+        <div class="workbench web-workbench">
+          <form class="control-deck" id="web-form">
+            <label>Project name<input id="web-brand" value="Nightjar" maxlength="28"></label>
+            <label>Big promise<textarea id="web-headline" rows="2" maxlength="90">Focus deeply. Finish beautifully.</textarea></label>
+            <label>Call to action<input id="web-cta" value="Begin your session" maxlength="32"></label>
+            <fieldset><legend>Visual direction</legend><div class="choice-row">
+              <button type="button" class="vibe active" data-vibe="editorial">Editorial</button><button type="button" class="vibe" data-vibe="neon">Neon</button><button type="button" class="vibe" data-vibe="calm">Calm</button><button type="button" class="vibe" data-vibe="brutal">Brutal</button>
+            </div></fieldset>
+            <div class="action-row"><button class="run-button" type="submit">Generate page <span>↗</span></button><button class="secondary-button" type="button" id="download-web">Download HTML</button></div>
+          </form>
+          <div class="output-deck"><div class="deck-bar"><span>LIVE PREVIEW</span><span id="web-status">EDITORIAL / READY</span></div><div class="site-preview editorial" id="site-preview"><div class="preview-nav"><b id="preview-brand">NIGHTJAR</b><span>Product&nbsp;&nbsp; Journal&nbsp;&nbsp; Sign in</span></div><div class="preview-body"><p>THE FOCUS SYSTEM / 2026</p><h4 id="preview-headline">Focus deeply.<br>Finish beautifully.</h4><button id="preview-cta">Begin your session ↗</button><div class="preview-shape"><i></i><i></i><i></i></div></div><div class="preview-foot"><span>BUILT IN YOUR BROWSER</span><span>01 — 04</span></div></div></div>
         </div>
-        <article class="mode-card accent-lime" aria-live="polite">
-          <div class="mode-copy"><div class="mode-kicker" id="mode-kicker"></div><h2 id="mode-title"></h2><p id="mode-copy"></p></div>
-          <div class="demo-window"><div class="window-top"><span><i></i><i></i><i></i></span><b>LIVE EXAMPLE</b></div><div class="prompt-line"><span>YOU</span><p id="mode-prompt"></p></div><div class="response-line"><span>CODEX</span><div id="mode-output"></div></div></div>
-        </article>
-      </div>
+      </section>
+
+      <section class="tool-panel" id="tool-data" role="tabpanel" hidden>
+        <div class="panel-intro"><div><span class="tool-no">02 / DATA LENS</span><h3>Give the numbers a point of view.</h3></div><p>Paste CSV or open a local file. The lab detects numeric columns, calculates the useful bits, and draws a chart.</p></div>
+        <div class="workbench data-workbench">
+          <div class="control-deck">
+            <div class="upload-row"><label class="file-button" for="csv-file">Open CSV file</label><input id="csv-file" type="file" accept=".csv,text/csv"><span id="file-name">or edit the sample</span></div>
+            <label>CSV data<textarea id="csv-input" rows="12">Month,Bookings,Revenue
+Jan,42,6300
+Feb,58,8700
+Mar,51,7900
+Apr,73,11200
+May,88,13900
+Jun,104,17150</textarea></label>
+            <button class="run-button" id="analyze-data" type="button">Analyze data <span>↗</span></button>
+          </div>
+          <div class="output-deck data-output"><div class="deck-bar"><span>ANALYSIS</span><span id="data-status">6 ROWS / 2 METRICS</span></div><div class="metric-grid" id="metric-grid"></div><div class="chart-wrap"><div class="chart-head"><div><span>SELECTED METRIC</span><select id="metric-select" aria-label="Chart metric"></select></div><b id="trend-badge"></b></div><div class="bar-chart" id="bar-chart"></div></div><div class="insight" id="data-insight"></div></div>
+        </div>
+      </section>
+
+      <section class="tool-panel" id="tool-notes" role="tabpanel" hidden>
+        <div class="panel-intro"><div><span class="tool-no">03 / NOTE TAMER</span><h3>Turn a brain-dump into a usable plan.</h3></div><p>Paste rough notes. The transformer finds decisions, actions, owners, and dates, then gives you clean Markdown.</p></div>
+        <div class="workbench notes-workbench">
+          <div class="control-deck"><label>Messy notes<textarea id="notes-input" rows="15">Launch meeting — July 17
+We decided to move the beta to August 12 so QA gets another week.
+Maya will finish the onboarding copy by Friday.
+Need to compare Stripe and Paddle before choosing billing.
+Action: Leo to send the revised pricing model tomorrow.
+Risk: mobile checkout is still 18% slower than desktop.
+Everyone agreed the launch story should focus on saved time, not more features.</textarea></label><div class="action-row"><button class="run-button" id="tame-notes" type="button">Transform notes <span>↗</span></button><button class="secondary-button" id="copy-notes" type="button">Copy Markdown</button></div></div>
+          <div class="output-deck notes-output"><div class="deck-bar"><span>STRUCTURED BRIEF</span><span id="notes-status">READY</span></div><div class="brief" id="brief-output"></div></div>
+        </div>
+      </section>
+
+      <section class="tool-panel" id="tool-poster" role="tabpanel" hidden>
+        <div class="panel-intro"><div><span class="tool-no">04 / POSTER LAB</span><h3>Make visual noise on purpose.</h3></div><p>Type a phrase, tune the energy, and generate a deterministic canvas poster you can download as a PNG.</p></div>
+        <div class="workbench poster-workbench">
+          <form class="control-deck" id="poster-form"><label>Poster words<textarea id="poster-words" rows="3" maxlength="80">MAKE THE MAYBE REAL</textarea></label><fieldset><legend>Palette</legend><div class="palette-row"><button type="button" class="palette active" data-palette="acid" aria-label="Acid palette"><i></i><i></i><i></i></button><button type="button" class="palette" data-palette="signal" aria-label="Signal palette"><i></i><i></i><i></i></button><button type="button" class="palette" data-palette="ice" aria-label="Ice palette"><i></i><i></i><i></i></button></div></fieldset><label class="range-label">Energy <output id="energy-output">72</output><input type="range" id="poster-energy" min="15" max="100" value="72"></label><div class="action-row"><button class="run-button" type="submit">Generate poster <span>↗</span></button><button class="secondary-button" id="download-poster" type="button">Download PNG</button></div></form>
+          <div class="output-deck poster-output"><div class="deck-bar"><span>800 × 1000 CANVAS</span><span id="poster-seed">SEED 0000</span></div><div class="canvas-shell"><canvas id="poster-canvas" width="800" height="1000"></canvas></div></div>
+        </div>
+      </section>
     </section>
 
-    <section class="principles wrap">
-      <header class="section-head inverse"><div><span class="section-no">02</span><span>HOW I WORK</span></div><p>Capability is nice.<br>Judgment is the point.</p></header>
-      <div class="principle-grid">
-        <article><span>01</span><div class="glyph">◎</div><h3>I inspect before I assume.</h3><p>I look at the actual files, facts, and constraints. Good work starts with contact with reality.</p></article>
-        <article><span>02</span><div class="glyph">⌁</div><h3>I make, then verify.</h3><p>I do the work and check the result—whether that means testing code or reviewing a finished document.</p></article>
-        <article><span>03</span><div class="glyph">↯</div><h3>I keep you in the loop.</h3><p>You see the meaningful choices and outcomes without being buried in the machinery.</p></article>
-      </div>
-    </section>
-
-    <section class="try-section" id="try"><div class="wrap try-inner">
-      <div class="try-intro"><span class="section-no">03</span><div><p>Enough about me.</p><h2>What are <em>you</em><br>trying to make?</h2></div></div>
-      <div class="prompt-lab">
-        <div class="suggestions"><button>Make my data tell a story</button><button>Design a launch experience</button><button>Untangle a messy project</button></div>
-        <form id="idea-form"><label for="idea">Your idea, in any state</label><div class="input-row"><textarea id="idea" placeholder="Describe the thing, the mess, or the maybe…" rows="3"></textarea><button type="submit" aria-label="Imagine an approach">↗</button></div></form>
-        <div class="concept-result" id="concept-result" aria-live="polite" hidden></div>
-      </div>
-    </div></section>
-
-    <footer class="footer wrap"><div><span class="brand-mark">C</span><p>THE BEST WAY TO FIND OUT<br>IS TO BRING ME SOMETHING.</p></div><a href="#top">Back to the beginning <span>↑</span></a></footer>
+    <section class="truth-strip"><div><span>WHAT THIS PROVES</span><h2>I can build interfaces, reason over data, structure information, and create visual systems.</h2></div><p>These demos run locally so the public site needs no secret key. In a real Codex task, the same skills can connect to your files, apps, browser, codebase, and workflows—with your approval.</p></section>
   </main>
+
+  <footer><div class="wordmark"><span class="mark">C</span><span>CODEX <i>//</i> HANDS-ON LAB</span></div><p>Made to be used, not admired from a distance.</p><a href="#top">Top ↑</a></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="script.js"></script>
 </body>
 </html>
