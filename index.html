@@ -108,6 +108,13 @@ Everyone agreed the launch story should focus on saved time, not more features.<
 
     <section class="media-section" id="media">
       <header class="media-head"><div><span>05 / VISUAL SYSTEM</span><h2>Light. Motion.<br>Ideas with texture.</h2></div><p>The stills are original artwork made for this site. The motion pieces are generated live in your browser—real video streams, no stock library.</p></header>
+      <div class="motion-mixer" aria-label="Live motion controls">
+        <div class="mixer-title"><span>LIVE MOTION MIXER</span><b>Change the system while it runs.</b></div>
+        <label>Speed <output id="motion-speed-output">1.0×</output><input id="motion-speed" type="range" min="0.2" max="2.5" step="0.1" value="1"></label>
+        <label>Particles <output id="motion-density-output">70</output><input id="motion-density" type="range" min="12" max="120" step="1" value="70"></label>
+        <fieldset><legend>Light palette</legend><div class="motion-palettes"><button class="active" type="button" data-motion-palette="acid">Acid</button><button type="button" data-motion-palette="signal">Signal</button><button type="button" data-motion-palette="ice">Ice</button></div></fieldset>
+        <div class="mixer-actions"><button id="remix-motion" type="button">Remix seed ↻</button><button id="download-motion" type="button">Save frame ↓</button></div>
+      </div>
       <div class="media-grid">
         <figure class="image-frame image-one"><img src="media/idea-to-thing.png" alt="Rough sketches and tactile materials representing an early idea"><figcaption><span>01</span><b>ROUGH SIGNAL</b><i>Original still</i></figcaption></figure>
         <figure class="video-frame video-one"><video id="motion-one" muted autoplay playsinline poster="media/idea-to-thing.png" aria-label="Generative flowing light video"></video><button class="video-toggle" type="button" data-video="motion-one" aria-label="Pause motion video">Ⅱ</button><figcaption><span>02</span><b>FLOW FIELD</b><i>Live video</i></figcaption></figure>

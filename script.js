@@ -315,27 +315,38 @@ $('#download-poster').addEventListener('click', () => {
 
 // LIVE MOTION STUDIES — canvas frames captured into real video elements
 const motionControllers = new Map();
+const motionSettings = { speed: 1, density: 70, palette: 'acid', seed: 0 };
+const motionThemes = {
+  acid: { bg: '#070a08', a: '223,255,63', b: '111,180,255' },
+  signal: { bg: '#100706', a: '255,107,74', b: '115,93,255' },
+  ice: { bg: '#06121a', a: '142,231,255', b: '238,252,255' }
+};
 
 function startMotion(video, mode) {
   const canvas = document.createElement('canvas');
   canvas.width = 1280;
   canvas.height = 720;
   const ctx = canvas.getContext('2d');
-  const random = randomFrom(hashText(mode));
-  const particles = Array.from({ length: mode === 'flow' ? 70 : 46 }, () => ({
-    x: random() * canvas.width,
-    y: random() * canvas.height,
-    radius: 1 + random() * 5,
-    speed: .25 + random() * 1.3,
-    phase: random() * Math.PI * 2
-  }));
-  const controller = { playing: true, frame: 0 };
+  let particles = [];
+  const controller = { playing: true, frame: 0, canvas };
+  controller.reseed = () => {
+    const random = randomFrom(hashText(`${mode}|${motionSettings.seed}`));
+    particles = Array.from({ length: 120 }, () => ({
+      x: random() * canvas.width,
+      y: random() * canvas.height,
+      radius: 1 + random() * 5,
+      speed: .25 + random() * 1.3,
+      phase: random() * Math.PI * 2
+    }));
+  };
+  controller.reseed();
   motionControllers.set(video.id, controller);
 
   function draw() {
-    controller.frame += controller.playing ? 1 : 0;
+    controller.frame += controller.playing ? motionSettings.speed : 0;
     const t = controller.frame / 60;
-    ctx.fillStyle = '#070a08';
+    const theme = motionThemes[motionSettings.palette];
+    ctx.fillStyle = theme.bg;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const glow = ctx.createRadialGradient(
@@ -343,8 +354,8 @@ function startMotion(video, mode) {
       canvas.height * (.5 + Math.cos(t * .16) * .18), 10,
       canvas.width / 2, canvas.height / 2, canvas.width * .68
     );
-    glow.addColorStop(0, mode === 'flow' ? 'rgba(223,255,63,.42)' : 'rgba(111,180,255,.38)');
-    glow.addColorStop(.38, mode === 'flow' ? 'rgba(111,180,255,.16)' : 'rgba(223,255,63,.14)');
+    glow.addColorStop(0, mode === 'flow' ? `rgba(${theme.a},.42)` : `rgba(${theme.b},.38)`);
+    glow.addColorStop(.38, mode === 'flow' ? `rgba(${theme.b},.16)` : `rgba(${theme.a},.14)`);
     glow.addColorStop(1, 'rgba(7,10,8,0)');
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -357,7 +368,7 @@ function startMotion(video, mode) {
           const y = canvas.height * (.18 + band * .105) + Math.sin(x * .009 + t * (1.2 + band * .08)) * (35 + band * 7);
           if (x === -30) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
-        ctx.strokeStyle = band % 2 ? 'rgba(111,180,255,.24)' : 'rgba(223,255,63,.3)';
+        ctx.strokeStyle = band % 2 ? `rgba(${theme.b},.24)` : `rgba(${theme.a},.3)`;
         ctx.lineWidth = 1 + band * .35;
         ctx.stroke();
       }
@@ -367,21 +378,21 @@ function startMotion(video, mode) {
       for (let ring = 0; ring < 7; ring += 1) {
         ctx.beginPath();
         ctx.ellipse(0, 0, 90 + ring * 66, 38 + ring * 31, t * (.05 + ring * .006), 0, Math.PI * 2);
-        ctx.strokeStyle = ring % 2 ? 'rgba(223,255,63,.22)' : 'rgba(111,180,255,.28)';
+        ctx.strokeStyle = ring % 2 ? `rgba(${theme.a},.22)` : `rgba(${theme.b},.28)`;
         ctx.lineWidth = 1.2;
         ctx.stroke();
       }
       ctx.restore();
     }
 
-    particles.forEach((particle, index) => {
+    particles.slice(0, motionSettings.density).forEach((particle, index) => {
       if (controller.playing) {
-        particle.x = (particle.x + particle.speed * (mode === 'flow' ? 2.2 : .5)) % canvas.width;
+        particle.x = (particle.x + particle.speed * motionSettings.speed * (mode === 'flow' ? 2.2 : .5)) % canvas.width;
         particle.y += Math.sin(t + particle.phase) * .35;
       }
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.radius * (1 + Math.sin(t * 1.7 + particle.phase) * .28), 0, Math.PI * 2);
-      ctx.fillStyle = index % 3 ? 'rgba(223,255,63,.72)' : 'rgba(111,180,255,.82)';
+      ctx.fillStyle = index % 3 ? `rgba(${theme.a},.72)` : `rgba(${theme.b},.82)`;
       ctx.fill();
     });
     ctx.globalCompositeOperation = 'source-over';
@@ -414,6 +425,36 @@ $$('.video-toggle').forEach(button => button.addEventListener('click', () => {
   button.textContent = controller.playing ? 'Ⅱ' : '▶';
   button.setAttribute('aria-label', `${controller.playing ? 'Pause' : 'Play'} motion video`);
 }));
+
+$('#motion-speed').addEventListener('input', event => {
+  motionSettings.speed = Number(event.target.value);
+  $('#motion-speed-output').textContent = `${motionSettings.speed.toFixed(1)}×`;
+});
+
+$('#motion-density').addEventListener('input', event => {
+  motionSettings.density = Number(event.target.value);
+  $('#motion-density-output').textContent = String(motionSettings.density);
+});
+
+$$('[data-motion-palette]').forEach(button => button.addEventListener('click', () => {
+  motionSettings.palette = button.dataset.motionPalette;
+  $$('[data-motion-palette]').forEach(item => item.classList.toggle('active', item === button));
+}));
+
+$('#remix-motion').addEventListener('click', () => {
+  motionSettings.seed += 1;
+  motionControllers.forEach(controller => controller.reseed());
+  toast(`Motion remixed — seed ${motionSettings.seed}`);
+});
+
+$('#download-motion').addEventListener('click', () => {
+  const controller = motionControllers.get('motion-one');
+  const link = document.createElement('a');
+  link.download = `motion-study-${String(motionSettings.seed).padStart(2, '0')}.png`;
+  link.href = controller.canvas.toDataURL('image/png');
+  link.click();
+  toast('Motion frame downloaded');
+});
 
 renderWeb();
 analyzeData();
