@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f2f0e8">
+  <meta name="description" content="An interactive field guide to what you can create with Codex.">
+  <title>From Thought to Thing — Codex Field Guide</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="site-shell">
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#top"><span class="brand-mark">C</span><span>CODEX / FIELD GUIDE</span></a>
+      <div class="nav-right"><span class="availability"><i></i> Ready to make</span><a class="pill-link" href="#try">Try a thought <span>↘</span></a></div>
+    </nav>
+
+    <section class="hero wrap" id="top">
+      <div class="hero-copy">
+        <div class="eyebrow"><span>✦</span> A small glimpse of what we can do together</div>
+        <h1><span>FROM</span><span class="outline-word">THOUGHT</span><span>TO <em>THING.</em></span></h1>
+        <div class="hero-bottom"><p>I research, reason, design, write, code, and operate tools. You bring the half-formed idea. We leave with something real.</p><a href="#studio" class="circle-link"><span>Explore</span><b>↓</b></a></div>
+      </div>
+      <div class="hero-orbit" aria-label="Interactive capability map">
+        <div class="orbit-stage"><div class="orbit-line orbit-one"></div><div class="orbit-line orbit-two"></div><div class="orbit-line orbit-three"></div><div class="core"><span class="core-label">IDEA</span><span class="core-arrow">↗</span></div><span class="orbit-tag tag-one">RESEARCH</span><span class="orbit-tag tag-two">DESIGN</span><span class="orbit-tag tag-three">CODE</span><span class="orbit-tag tag-four">SHIP</span><span class="orbit-dot dot-one"></span><span class="orbit-dot dot-two"></span></div>
+        <div class="orbit-caption"><span>Move around</span><span>Possibility engine / 2026</span></div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Capabilities"><div class="ticker-track"><span>RESEARCH</span><i>✦</i><span>DESIGN</span><i>✦</i><span>CODE</span><i>✦</i><span>ANALYZE</span><i>✦</i><span>AUTOMATE</span><i>✦</i><span>CREATE</span><i>✦</i><span>RESEARCH</span><i>✦</i><span>DESIGN</span><i>✦</i><span>CODE</span><i>✦</i><span>ANALYZE</span><i>✦</i><span>AUTOMATE</span><i>✦</i><span>CREATE</span><i>✦</i></div></section>
+
+    <section class="studio wrap" id="studio">
+      <header class="section-head"><div><span class="section-no">01</span><span>THE STUDIO</span></div><p>One partner.<br>Many kinds of momentum.</p></header>
+      <div class="mode-grid">
+        <div class="mode-tabs" role="tablist" aria-label="Kinds of work">
+          <button class="active" data-mode="0" role="tab" aria-selected="true"><span>01</span><strong>Build</strong><i>↗</i></button>
+          <button data-mode="1" role="tab" aria-selected="false"><span>02</span><strong>Understand</strong><i>→</i></button>
+          <button data-mode="2" role="tab" aria-selected="false"><span>03</span><strong>Automate</strong><i>→</i></button>
+          <button data-mode="3" role="tab" aria-selected="false"><span>04</span><strong>Create</strong><i>→</i></button>
+        </div>
+        <article class="mode-card accent-lime" aria-live="polite">
+          <div class="mode-copy"><div class="mode-kicker" id="mode-kicker"></div><h2 id="mode-title"></h2><p id="mode-copy"></p></div>
+          <div class="demo-window"><div class="window-top"><span><i></i><i></i><i></i></span><b>LIVE EXAMPLE</b></div><div class="prompt-line"><span>YOU</span><p id="mode-prompt"></p></div><div class="response-line"><span>CODEX</span><div id="mode-output"></div></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="principles wrap">
+      <header class="section-head inverse"><div><span class="section-no">02</span><span>HOW I WORK</span></div><p>Capability is nice.<br>Judgment is the point.</p></header>
+      <div class="principle-grid">
+        <article><span>01</span><div class="glyph">◎</div><h3>I inspect before I assume.</h3><p>I look at the actual files, facts, and constraints. Good work starts with contact with reality.</p></article>
+        <article><span>02</span><div class="glyph">⌁</div><h3>I make, then verify.</h3><p>I do the work and check the result—whether that means testing code or reviewing a finished document.</p></article>
+        <article><span>03</span><div class="glyph">↯</div><h3>I keep you in the loop.</h3><p>You see the meaningful choices and outcomes without being buried in the machinery.</p></article>
+      </div>
+    </section>
+
+    <section class="try-section" id="try"><div class="wrap try-inner">
+      <div class="try-intro"><span class="section-no">03</span><div><p>Enough about me.</p><h2>What are <em>you</em><br>trying to make?</h2></div></div>
+      <div class="prompt-lab">
+        <div class="suggestions"><button>Make my data tell a story</button><button>Design a launch experience</button><button>Untangle a messy project</button></div>
+        <form id="idea-form"><label for="idea">Your idea, in any state</label><div class="input-row"><textarea id="idea" placeholder="Describe the thing, the mess, or the maybe…" rows="3"></textarea><button type="submit" aria-label="Imagine an approach">↗</button></div></form>
+        <div class="concept-result" id="concept-result" aria-live="polite" hidden></div>
+      </div>
+    </div></section>
+
+    <footer class="footer wrap"><div><span class="brand-mark">C</span><p>THE BEST WAY TO FIND OUT<br>IS TO BRING ME SOMETHING.</p></div><a href="#top">Back to the beginning <span>↑</span></a></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
